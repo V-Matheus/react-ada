@@ -56,3 +56,46 @@ header #navBar .nav-list .nav-item a:hover {
   color: #777;
   transition: color 0.3s;
 }
+
+main {
+  margin-top: 6rem;
+}
+
+main #banner {
+  display: flex;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+main #banner .banner-content .banner-content-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 60px;
+  margin-bottom: 40px;
+}
+
+main #banner .banner-content .banner-content-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 500px;
+  margin-bottom: 38px;
+}
+
+main #banner .banner-content .banner-content-btn {
+  background-color: #00a8cc;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 8px 24px;
+  border: none;
+}
+
+main #banner .banner-image {
+  border-radius: 50%;
+  width: 100%;
+  max-width: 300px;
+}
