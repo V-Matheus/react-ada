@@ -68,3 +68,30 @@ console.log(retorno);
 const resultado = calcular(10, 5, (num1, num2) => (num1 * num2) + (2 * num1 * num2))
 
 console.log(resultado);
+
+console.clear()
+
+// Funções de alta ordem já feitas
+
+const numeros = [40, 34, 67, 89, 23, 10]
+
+numeros.forEach((elemento, index, arrayCompleto) => {
+  console.log(index, elemento, arrayCompleto);
+})
+
+const encontrado = numeros.find((numero) => {
+  return numero === 10
+})
+
+console.log(encontrado);
+
+const pessoas =  [
+  {
+    nome: 'Pessoa 1',
+    idade: 35
+  },
+  {
+    nome: 'Pessoa 2',
+    idade: 12
+  },
+]
