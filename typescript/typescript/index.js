@@ -9,3 +9,10 @@ console.log(nomeDoUsuario === null || nomeDoUsuario === void 0 ? void 0 : nomeDo
 // number[] ou Array<number>
 const numeros = [1, 2, 3, 4, 5];
 const idades = [];
+idades.push(23);
+idades.push(38);
+idades.push(12);
+idades.push(18);
+idades.push(16);
+const menoresIdade = idades.filter((idade) => idade < 18);
+console.log(menoresIdade);

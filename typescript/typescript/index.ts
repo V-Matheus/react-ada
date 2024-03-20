@@ -15,3 +15,13 @@ console.log(nomeDoUsuario?.toLocaleLowerCase());
 const numeros: number[] = [1,2,3,4,5]
 
 const idades: number[] = []
+
+idades.push(23)
+idades.push(38)
+idades.push(12)
+idades.push(18)
+idades.push(16)
+
+const menoresIdade = idades.filter((idade) => idade < 18)
+
+console.log(menoresIdade);
