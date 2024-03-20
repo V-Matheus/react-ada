@@ -16,3 +16,11 @@ idades.push(18);
 idades.push(16);
 const menoresIdade = idades.filter((idade) => idade < 18);
 console.log(menoresIdade);
+// Tupla
+const pessoaTupla = ['Matheus', 19];
+const pessoa = {
+    nome: 'Matheus',
+    idade: 19,
+    profissao: 'dev',
+    altura: 1.8,
+};
