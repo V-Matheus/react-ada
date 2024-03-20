@@ -39,3 +39,10 @@ function getNumber(num1, num2, criterio) {
 }
 const numeroEscolhido = getNumber(10, 20, 'lower');
 console.log(numeroEscolhido);
+const pessoas = {
+    '123.456.789-00': {
+        nome: 'Fulano',
+        idade: 20,
+        altura: 1.75
+    }
+};

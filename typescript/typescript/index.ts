@@ -74,3 +74,38 @@ function getNumber(num1: number, num2: number, criterio?: Criterio): number {
 const numeroEscolhido = getNumber(10, 20, 'lower');
 
 console.log(numeroEscolhido);
+
+
+// Utility types
+
+// Partial
+
+type PersonPartial = Partial<PersonType>
+
+// Require
+
+type personRequire = Required<PersonType>
+
+// pick
+
+type PersonPicked = Pick<PersonType, 'nome' | 'idade'>
+
+// Omit
+
+type PersonOmity = Omit<PersonType, 'profissao' >
+
+// Exclude
+
+type criterioExclude = Exclude<Criterio, 'greater'>
+
+// Record
+
+type Pessoas = Record<string, PersonType>
+
+const pessoas: Pessoas = {
+  '123.456.789-00': {
+    nome: 'Fulano',
+    idade: 20,
+    altura: 1.75
+  }
+}
