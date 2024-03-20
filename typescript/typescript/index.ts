@@ -7,9 +7,9 @@ let correta = true;
 
 let resultado = numero * pi;
 
-const nomeDoUsuario = prompt('Qual o teu nome? ');
+// const nomeDoUsuario = prompt('Qual o teu nome? ');
 
-console.log(nomeDoUsuario?.toLocaleLowerCase());
+// console.log(nomeDoUsuario?.toLocaleLowerCase());
 
 // number[] ou Array<number>
 const numeros: number[] = [1, 2, 3, 4, 5];
@@ -46,8 +46,7 @@ type PersonType = {
   idade: number;
   profissao?: string;
   altura: number;
-}
-
+};
 
 const pessoa: PersonType = {
   nome: 'Matheus',
@@ -55,3 +54,23 @@ const pessoa: PersonType = {
   profissao: 'dev',
   altura: 1.8,
 };
+
+type Criterio = 'greater' | 'lower';
+
+function getNumber(num1: number, num2: number, criterio?: Criterio): number {
+  switch (criterio) {
+    case 'greater':
+      return num1 > num2 ? num1 : num2;
+    case 'lower':
+      return num1 < num2 ? num1 : num2;
+    default:
+      const numeroAleatorio = Math.random();
+
+      if (numeroAleatorio >= 0.5) return num1;
+      return num2;
+  }
+}
+
+const numeroEscolhido = getNumber(10, 20, 'lower');
+
+console.log(numeroEscolhido);
