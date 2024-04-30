@@ -15,32 +15,34 @@ form.addEventListener('submit', (event) => {
   }
 
   tasks.push({ title: taskTitle, done: false });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
   const li = document.createElement('li');
 
   const input = document.createElement('input');
   input.setAttribute('type', 'checkbox');
   input.addEventListener('change', (event) => {
-    const liToToggle = event.target.parentElement
+    const liToToggle = event.target.parentElement;
 
-    const spanToToggle = liToToggle.querySelector('span')
+    const spanToToggle = liToToggle.querySelector('span');
 
-    const done = event.target.checked
-    if(done) {
-      spanToToggle.style.textDecoration = 'line-through'
+    const done = event.target.checked;
+    if (done) {
+      spanToToggle.style.textDecoration = 'line-through';
     } else {
-      spanToToggle.style.textDecoration = 'none'
+      spanToToggle.style.textDecoration = 'none';
     }
 
-    tasks.map(t => {
-      if(t.title === spanToToggle.textContent) {
+    tasks.map((t) => {
+      if (t.title === spanToToggle.textContent) {
         return {
           title: t.title,
-          done: !t.done
-        }
-        return t
+          done: !t.done,
+        };
       }
-    })
-  })
+      return t;
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  });
 
   const span = document.createElement('span');
   span.textContent = taskTitle;
@@ -48,14 +50,16 @@ form.addEventListener('submit', (event) => {
   const button = document.createElement('button');
   button.textContent = 'Remover';
   button.addEventListener('click', (event) => {
-    const liToRemove = event.target.parentElement
+    const liToRemove = event.target.parentElement;
 
-    const titleToRemove = liToRemove.querySelector('span').textContent
+    const titleToRemove = liToRemove.querySelector('span').textContent;
 
-    tasks.filter(t => t.title !== titleToRemove)
+    tasks.filter((t) => t.title !== titleToRemove);
 
-    todoListUl.removeChild(liToRemove)
-  })
+    todoListUl.removeChild(liToRemove);
+    
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  });
 
   li.appendChild(input);
   li.appendChild(span);
