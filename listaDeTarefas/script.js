@@ -1,36 +1,67 @@
-const form = document.querySelector('#todo-form')
-const taskTitleInput = document.querySelector('#task-title-input')
-const todoListUl = document.querySelector('#todo-list')
+const form = document.querySelector('#todo-form');
+const taskTitleInput = document.querySelector('#task-title-input');
+const todoListUl = document.querySelector('#todo-list');
 
-let tasks = []
+let tasks = [];
 
 form.addEventListener('submit', (event) => {
-  event.preventDefault()
+  event.preventDefault();
 
-  const taskTitle = taskTitleInput.value
+  const taskTitle = taskTitleInput.value;
 
-  if(taskTitle.lenght < 3) {
-    alert('Sua tarefa precisa de pelo menos 3 caracteres')
-    return
+  if (taskTitle.lenght < 3) {
+    alert('Sua tarefa precisa de pelo menos 3 caracteres');
+    return;
   }
 
-  tasks.push(taskTitle)
-  const li = document.createElement('li')
+  tasks.push({ title: taskTitle, done: false });
+  const li = document.createElement('li');
 
-  const input  = document.createElement('input')
-  input.setAttribute('type', 'checkbox')
+  const input = document.createElement('input');
+  input.setAttribute('type', 'checkbox');
+  input.addEventListener('change', (event) => {
+    const liToToggle = event.target.parentElement
 
-  const span = document.createElement('span')
-  span.textContent = taskTitle
+    const spanToToggle = liToToggle.querySelector('span')
 
-  const button = document.createElement('button')
-  button.textContent = 'Remover'
+    const done = event.target.checked
+    if(done) {
+      spanToToggle.style.textDecoration = 'line-through'
+    } else {
+      spanToToggle.style.textDecoration = 'none'
+    }
 
-  li.appendChild(input)
-  li.appendChild(span)
-  li.appendChild(button)
+    tasks.map(t => {
+      if(t.title === spanToToggle.textContent) {
+        return {
+          title: t.title,
+          done: !t.done
+        }
+        return t
+      }
+    })
+  })
 
-  todoListUl.appendChild(li)
+  const span = document.createElement('span');
+  span.textContent = taskTitle;
 
-  taskTitleInput.value = ''
-})
+  const button = document.createElement('button');
+  button.textContent = 'Remover';
+  button.addEventListener('click', (event) => {
+    const liToRemove = event.target.parentElement
+
+    const titleToRemove = liToRemove.querySelector('span').textContent
+
+    tasks.filter(t => t.title !== titleToRemove)
+
+    todoListUl.removeChild(liToRemove)
+  })
+
+  li.appendChild(input);
+  li.appendChild(span);
+  li.appendChild(button);
+
+  todoListUl.appendChild(li);
+
+  taskTitleInput.value = '';
+});
