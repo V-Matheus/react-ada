@@ -16,6 +16,21 @@ form.addEventListener('submit', (event) => {
 
   tasks.push(taskTitle)
   const li = document.createElement('li')
-  li.textContent = taskTitle
+
+  const input  = document.createElement('input')
+  input.setAttribute('type', 'checkbox')
+
+  const span = document.createElement('span')
+  span.textContent = taskTitle
+
+  const button = document.createElement('button')
+  button.textContent = 'Remover'
+
+  li.appendChild(input)
+  li.appendChild(span)
+  li.appendChild(button)
+
   todoListUl.appendChild(li)
+
+  taskTitleInput.value = ''
 })
