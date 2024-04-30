@@ -4,18 +4,7 @@ const todoListUl = document.querySelector('#todo-list');
 
 let tasks = [];
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-
-  const taskTitle = taskTitleInput.value;
-
-  if (taskTitle.lenght < 3) {
-    alert('Sua tarefa precisa de pelo menos 3 caracteres');
-    return;
-  }
-
-  tasks.push({ title: taskTitle, done: false });
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+function renderTaskOnHTML(taskTitle, done = false) {
   const li = document.createElement('li');
 
   const input = document.createElement('input');
@@ -43,10 +32,15 @@ form.addEventListener('submit', (event) => {
     });
     localStorage.setItem('tasks', JSON.stringify(tasks));
   });
-
+  input.checked = done
+  
   const span = document.createElement('span');
   span.textContent = taskTitle;
-
+  
+    if(done) {
+      span.style.textDecoration = 'line-through';
+    }
+  
   const button = document.createElement('button');
   button.textContent = 'Remover';
   button.addEventListener('click', (event) => {
@@ -66,6 +60,34 @@ form.addEventListener('submit', (event) => {
   li.appendChild(button);
 
   todoListUl.appendChild(li);
+}
+
+window.onload = () => {
+  const taskOnLocalStorage = localStorage.getItem('tasks')
+  
+  if(!taskOnLocalStorage) return
+
+  tasks = JSON.parse(taskOnLocalStorage)
+
+  tasks.forEach(t => {
+    renderTaskOnHTML(t.title, t.done)
+  });
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const taskTitle = taskTitleInput.value;
+
+  if (taskTitle.lenght < 3) {
+    alert('Sua tarefa precisa de pelo menos 3 caracteres');
+    return;
+  }
+
+  tasks.push({ title: taskTitle, done: false });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  
+  renderTaskOnHTML(taskTitle)
 
   taskTitleInput.value = '';
 });
