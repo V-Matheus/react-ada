@@ -15,25 +15,30 @@ form?.addEventListener('submit', async (event) => {
     return;
   }
 
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${localizacao}&appid=001accd817c12b168516c84a375ba156&lang=pt_br&units=metric`,
-  );
-
-  const dados = await response.json();
-
-  const infos = {
-    temperatura: Math.round(dados.main.temp),
-    local: dados.name,
-    icone: `https://openweathermap.org/img/wn/${dados.weather[0].icon}@2x.png`,
-  };
-
-  sectionTempoInfo.innerHTML = `
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${localizacao}&appid=001accd817c12b168516c84a375ba156&lang=pt_br&units=metric`,
+    );
   
-<div class="tempo-dados">
-<h2>${infos.local}</h2>
-<span>${infos.temperatura}º C</span>
-</div>
-
-<img src="${infos.icone}">
-  `;
+    const dados = await response.json();
+  
+    const infos = {
+      temperatura: Math.round(dados.main.temp),
+      local: dados.name,
+      icone: `https://openweathermap.org/img/wn/${dados.weather[0].icon}@2x.png`,
+    };
+  
+    sectionTempoInfo.innerHTML = `
+    
+  <div class="tempo-dados">
+  <h2>${infos.local}</h2>
+  <span>${infos.temperatura}º C</span>
+  </div>
+  
+  <img src="${infos.icone}">
+    `;
+  } catch (err) {
+    console.log(err);
+    
+  }
 });
