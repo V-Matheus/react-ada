@@ -1,0 +1,36 @@
+header #navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 80px;
+}
+
+header #navbar .nav-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+header #navbar ul.nav-list {
+  display: flex;
+  align-items: center;
+
+  list-style: none;
+  gap: 1rem;
+}
+
+header nav#navbar ul.nav-list li a {
+  color: #ccc;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+
+header nav#navbar ul.nav-list li a:hover {
+  color: white;
+}
