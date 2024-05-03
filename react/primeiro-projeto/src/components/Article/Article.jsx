@@ -7,17 +7,16 @@ export class Article extends React.Component {
       <article>
         <img src="" alt="" />
         <div className="article-infos">
-          <h2>Designing Dashbords</h2>
-          <h3>NASA</h3>
+          <h2>{this.props.title}</h2>
+          <h3>{this.props.provider}</h3>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate
-            officia laborum et molestiae? Quisquam provident temporibus
-            reprehenderit, numquam quo hic enim? Minima veniam quidem mollitia
-            nihil, laudantium libero eaque omnis.
+          {this.props.description}
           </p>
         </div>
       </article>
     );
   }
 }
+
+
