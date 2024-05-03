@@ -30,6 +30,12 @@ header nav#navbar ul.nav-list li a {
   transition: color 0.3s;
 }
 
+.nav-brand > img {
+  height: 12px;
+  width: 20px;
+  background-color: aliceblue;
+}
+
 
 header nav#navbar ul.nav-list li a:hover {
   color: white;
