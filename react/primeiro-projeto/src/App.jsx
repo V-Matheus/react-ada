@@ -2,12 +2,15 @@ import React from 'react';
 import './styles/App.css';
 import { Navbar } from './components/Navbar/Navbar';
 import { Article } from './components/Article/Article';
+import { Counter } from './components/Counter/Counter';
 
 class App extends React.Component {
   render() {
     return (
       <>
         <Navbar />
+
+        <Counter />
 
         <section id="articles">
           <Article
