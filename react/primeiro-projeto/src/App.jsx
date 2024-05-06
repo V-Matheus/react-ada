@@ -8,11 +8,11 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Navbar />
+        {/* <Navbar /> */}
 
         <Counter />
 
-        <section id="articles">
+        {/* <section id="articles">
           <Article
             title="Designing Dashbord"
             provider="NASA"
@@ -25,7 +25,7 @@ class App extends React.Component {
           />
           <Article title="exemplo 3" />
           <Article title="exemplo 4" />
-        </section>
+        </section> */}
       </>
     );
   }
