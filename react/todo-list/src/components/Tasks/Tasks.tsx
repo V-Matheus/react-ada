@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './style.module.scss';
+import { json } from 'stream/consumers';
 
 interface Task {
   title: string;
@@ -19,10 +20,22 @@ const Tasks: React.FC = () => {
       return;
     }
 
-    setTasks([...tasks, { id: new Date().getTime(), title: taskTitle, done: false }]);
+    const newTasks = [
+      ...tasks,
+      { id: new Date().getTime(), title: taskTitle, done: false },
+    ];
 
-    setTaskTitle('')
+    setTasks(newTasks);
+    localStorage.setItem('tasks', JSON.stringify(newTasks));
+    setTaskTitle('');
   }
+
+  useEffect(() => {
+    const tasksOnLocalStorage = localStorage.getItem('tasks');
+    if (tasksOnLocalStorage) {
+      setTasks(JSON.parse(tasksOnLocalStorage));
+    }
+  }, []);
 
   return (
     <section className={styles.container}>
