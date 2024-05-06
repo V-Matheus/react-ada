@@ -1,7 +1,6 @@
 #article {
   display: flex;
   gap: 1rem;
-
 }
 
 #article .article-info h2 {
@@ -11,8 +10,13 @@
 }
 
 #article .article-info h3 {
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 400;
   color: #8695a4;
   margin-bottom: 1rem;
+}
+
+#article img {
+  max-width: 350px;
+  border-radius: 5px;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.css';
 
-export function Article({title, provider, description}) {
+export function Article({title, provider, description, thumbnail}) {
   return (
-    <article>
-      <img src="" alt="" />
-      <div className="article-infos">
+    <article id='article'>
+      <img src={thumbnail} alt="" />
+      <div className="article-info">
         <h2>{title}</h2>
         <h3>{provider}</h3>
 
