@@ -19,10 +19,9 @@ const Tasks: React.FC = () => {
       return;
     }
 
-    setTasks([
-      ...tasks,
-      {id: 1, title: taskTitle, done: false}
-    ])
+    setTasks([...tasks, { id: new Date().getTime(), title: taskTitle, done: false }]);
+
+    setTaskTitle('')
   }
 
   return (
@@ -43,15 +42,14 @@ const Tasks: React.FC = () => {
       </form>
 
       <ul>
-        <li>
-          <input type="checkbox" id="task1" />
-          <label htmlFor="task1">Tarefa 1</label>
-        </li>
-
-        <li>
-          <input type="checkbox" id="task2" />
-          <label htmlFor="task2">Tarefa 2</label>
-        </li>
+        {tasks.map((task) => {
+          return (
+            <li key={task.id}>
+              <input type="checkbox" id={`task-${task.id}`} />
+              <label htmlFor={`task-${task.id}`}>{task.title}</label>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
