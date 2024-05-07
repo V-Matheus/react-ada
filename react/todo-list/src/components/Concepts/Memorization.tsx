@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 interface MemorizationProps {
   financeData: {
@@ -21,6 +21,10 @@ const Memorization: React.FC<MemorizationProps> = ({ financeData }) => {
       return (total += outcome);
     }, 0);
   }, [financeData.outcomes])
+
+  const aplicarDesconto = useCallback((desconto: number) => {
+    return totalOutcomes * (1 - desconto)
+  }, [totalOutcomes])
 
   return (
     <div style={{ padding: '2rem' }}>
