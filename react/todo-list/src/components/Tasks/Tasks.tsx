@@ -5,7 +5,7 @@ import { TaskContext } from '../../context/TaskContex';
 const Tasks: React.FC = () => {
   const [taskTitle, setTaskTitle] = useState('');
 
-  const {tasks, setTasks} = useContext(TaskContext)
+  const { tasks, setTasks } = useContext(TaskContext);
 
   function handleSubmitAddTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -23,6 +23,21 @@ const Tasks: React.FC = () => {
     setTasks(newTasks);
     localStorage.setItem('tasks', JSON.stringify(newTasks));
     setTaskTitle('');
+  }
+
+  function handleToggleTasksStatus(taskId: number) {
+    const newTasks = tasks.map((task) => {
+      if (taskId === task.id) {
+        return {
+          ...task,
+          done: !task.done,
+        };
+      }
+
+      return task;
+    });
+
+    setTasks(newTasks);
   }
 
   return (
@@ -46,8 +61,12 @@ const Tasks: React.FC = () => {
         {tasks.map((task) => {
           return (
             <li key={task.id}>
-              <input type="checkbox" id={`task-${task.id}`} />
-              <label htmlFor={`task-${task.id}`}>{task.title}</label>
+              <input
+                type="checkbox"
+                id={`task-${task.id}`}
+                onChange={() => handleToggleTasksStatus(task.id)}
+              />
+              <label className={task.done ? styles.done : ''} htmlFor={`task-${task.id}`}>{task.title}</label>
             </li>
           );
         })}
