@@ -1,7 +1,13 @@
 import styles from './styles.module.scss';
 import StatsCard from '../StatsCard/StatsCard';
+import { useContext } from 'react';
+import { TaskContext } from '../../context/TaskContex';
 
 const Header: React.FC = () => {
+
+  const {tasks} = useContext(TaskContext)
+  
+  
   return (
     <header className={styles.header}>
       <div className={styles.container}>

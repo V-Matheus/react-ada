@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './style.module.scss';
-
-interface Task {
-  title: string;
-  done: boolean;
-  id: number;
-}
+import { TaskContext } from '../../context/TaskContex';
 
 const Tasks: React.FC = () => {
   const [taskTitle, setTaskTitle] = useState('');
-  const [tasks, setTasks] = useState([] as Task[]);
+
+  const {tasks, setTasks} = useContext(TaskContext)
 
   function handleSubmitAddTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,13 +24,6 @@ const Tasks: React.FC = () => {
     localStorage.setItem('tasks', JSON.stringify(newTasks));
     setTaskTitle('');
   }
-
-  useEffect(() => {
-    const tasksOnLocalStorage = localStorage.getItem('tasks');
-    if (tasksOnLocalStorage) {
-      setTasks(JSON.parse(tasksOnLocalStorage));
-    }
-  }, []);
 
   return (
     <section className={styles.container}>

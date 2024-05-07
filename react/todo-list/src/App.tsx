@@ -1,21 +1,14 @@
-import Memorization from './components/Concepts/Memorization';
-import Refs from './components/Concepts/Refs';
 import Header from './components/Header/Header';
 import Tasks from './components/Tasks/Tasks';
+import { TaskProvider } from './context/TaskContex';
 import './styles/global.css';
 
 function App() {
   return (
-    <>
+    <TaskProvider >
       <Header />
       <Tasks />
-
-      {/* <Refs /> */}
-
-      <Memorization
-        financeData={{ incomes: [50, 30, 20], outcomes: [5, 8, 4] }}
-      />
-    </>
+    </TaskProvider>
   );
 }
 
