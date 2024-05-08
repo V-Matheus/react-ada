@@ -9,6 +9,14 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     background-color: #f7f7f7;
-    
+  }
+
+  button {
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(1.2);
+      transition: filter 0.3s
+    }
   }
 `
