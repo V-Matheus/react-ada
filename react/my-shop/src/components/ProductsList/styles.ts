@@ -7,7 +7,7 @@ export const Container = styled.main`
 
   display: flex;
   justify-content:space-between;
-  align-items: center;
+  align-items: stretch;
   gap: 2rem;
   flex-wrap: wrap;
 

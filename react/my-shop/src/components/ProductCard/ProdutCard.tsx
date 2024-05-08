@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './styles';
 import { FiShoppingCart } from 'react-icons/fi';
 import { Product } from '../../data/products';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 interface ProductCardProps {
   product: Product;
@@ -10,15 +11,21 @@ interface ProductCardProps {
 const ProdutCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <S.Card>
-      <S.ProductImage
-        src={product.image}
-        alt={product.description}
-      />
+      <S.ProductImage src={product.image} alt={product.description} />
 
       <S.ProductTitle>{product.title}</S.ProductTitle>
 
       <S.ReviewPriceContainer>
-        <S.Review>{product.rating.rate}</S.Review>
+        <S.Review>
+          {Array.from({ length: 5 }).map(
+            (_, index) => index < Math.round(product.rating.rate) ? (
+              <AiFillStar />
+            ) : (
+              <AiOutlineStar />
+            )
+          ) }
+          {` (${product.rating.rate})`}
+        </S.Review>
 
         <S.Price>{product.price}</S.Price>
       </S.ReviewPriceContainer>
