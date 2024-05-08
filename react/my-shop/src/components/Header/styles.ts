@@ -25,12 +25,16 @@ export const HeaderTitle = styled.h1`
   font-weight: 500;
 `;
 
-export const AuthButton = styled.button`
+interface AuthButtonProps {
+  isLogged: boolean
+}
+
+export const AuthButton = styled.button<AuthButtonProps>`
   border: none;
   border-radius: 5px;
   height: 30px;
   padding: 0 1rem;
-  background-color: green;
+  background-color: ${(props) => props.isLogged ? 'red' : 'green'};
   color: white;
   font-size: 0.75rem;
 
