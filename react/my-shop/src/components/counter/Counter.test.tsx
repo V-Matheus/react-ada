@@ -1,5 +1,4 @@
-import '@testing-library/jest-dom';
-import { getByTestId, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Counter from './Counter';
 import userEvent from '@testing-library/user-event';
 
