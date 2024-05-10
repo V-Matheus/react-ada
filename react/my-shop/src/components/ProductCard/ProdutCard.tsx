@@ -30,7 +30,7 @@ const ProdutCard: React.FC<ProductCardProps> = ({ product }) => {
   function handleRemoveProductFromCart() {
     dispatch({
       type: 'cart/remove-product',
-      payload: product1
+      payload: product
     })
   }
 
