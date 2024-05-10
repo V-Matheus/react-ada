@@ -5,6 +5,7 @@ import { Product } from '../../data/products';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../../redux/root-reducer';
+import { addProduct, removeProduct } from '../../redux/Cart/cart-slice';
 
 interface ProductCardProps {
   product: Product;
@@ -21,17 +22,11 @@ const ProdutCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
 
   function handleAddProductToCart() {
-    dispatch({
-      type: 'cart/add-product',
-      payload: product,
-    });
+    dispatch(addProduct(product))
   }
 
   function handleRemoveProductFromCart() {
-    dispatch({
-      type: 'cart/remove-product',
-      payload: product
-    })
+    dispatch(removeProduct(product))
   }
 
   return (

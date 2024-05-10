@@ -5,29 +5,27 @@ import { FiLogIn, FiLogOut, FiShoppingCart } from 'react-icons/fi';
 import Cart from '../Cart/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../../redux/root-reducer';
+import { login, logout } from '../../redux/User/user-slice';
 
 const Header: React.FC = () => {
   const { user } = useSelector(
     (rootReducer: RootReducer) => rootReducer.userReducer,
   );
 
+  const dispatch = useDispatch();
   const [showCart, setShowCart] = useState(false);
   const isLogged = user !== null;
-  const dispatch = useDispatch();
 
   function handleUserAuth() {
     if (user === null) {
-      dispatch({
-        type: 'user/login',
-        payload: {
+      dispatch(
+        login({
           name: 'victor Mathes',
           email: 'victormatheus507@gmail.com',
-        },
-      });
+        }),
+      );
     } else {
-      dispatch({
-        type: 'user/logout',
-      });
+      dispatch(logout({}));
     }
   }
 
